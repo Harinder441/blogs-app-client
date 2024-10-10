@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import PrivateRoute from './components/PrivateRoute';
+import SingleBlogView from './components/SingleBlogView';
 import './App.css';
 
 function App() {
@@ -17,8 +18,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/blog/:id" element={<SingleBlogView />} />
           <Route element={<PrivateRoute/>}>
-              <Route path='/dashboard' element={<Dashboard/>} />
+            <Route path='/dashboard' element={<Dashboard/>} />
           </Route>
         </Routes>
       </div>
