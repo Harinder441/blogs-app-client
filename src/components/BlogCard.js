@@ -6,7 +6,7 @@ const BlogCard = ({ blog }) => {
     <div className="blog-card">
       <h2>{blog.title}</h2>
       <p>{blog.excerpt}</p>
-      <Link to={`/blog/${blog.id}`}>Read more</Link>
+      <Link to={`/blog/${blog._id}`}>Read more</Link>
     </div>
   );
 };

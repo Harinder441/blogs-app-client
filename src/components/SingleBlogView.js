@@ -39,7 +39,10 @@ const SingleBlogView = () => {
       {blog.media && (
         <div className="blog-media">
           {blog.media.map((item, index) => (
-            <img key={index} src={item} alt={`Blog media ${index + 1}`} />
+
+            item.type==="image" && (
+             <img key={index} src={item.url} alt={`Blog media ${index + 1}`} width="50%" height="50%" />
+            )
           ))}
         </div>
       )}

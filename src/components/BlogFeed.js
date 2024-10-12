@@ -7,15 +7,18 @@ const BlogFeed = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [totalPages, setTotalPages] = useState(1);
-console.log("Rendering BlogFeed");
+  console.log("Rendering BlogFeed");
+  console.log("pageq,", page);
+
   useEffect(() => {
+    console.log("Rendering BlogFeed uisefffs");
     fetchBlogs();
   }, []);
 
   const fetchBlogs = async () => {
     try {
       setLoading(true);
-      const response = await api.get(`/blogs?page=${page}`);
+      const response = await api.get(`/blogs?page=${page}&limit=2`);
       setBlogs(prevBlogs => [...prevBlogs, ...response.data.blogs]);
       setPage(prevPage => prevPage + 1);
       setTotalPages(response.data.totalPages);
@@ -31,8 +34,8 @@ console.log("Rendering BlogFeed");
       window.innerHeight + document.documentElement.scrollTop ===
       document.documentElement.offsetHeight
     ) {
-      if (page < totalPages) {
-        console.log(page);
+      if (page <= totalPages) {
+        console.log("inside handleScroll", page);
         fetchBlogs();
       }
     }
@@ -41,12 +44,12 @@ console.log("Rendering BlogFeed");
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [page, totalPages]);
 
   return (
     <div className="blog-feed">
       {blogs.map(blog => (
-        <BlogCard key={blog.id} blog={blog} />
+        <BlogCard key={blog._id} blog={blog} />
       ))}
       {loading && <p>Loading more blogs...</p>}
     </div>
