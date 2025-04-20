@@ -7,6 +7,8 @@ import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import PrivateRoute from './components/PrivateRoute';
 import SingleBlogView from './components/SingleBlogView';
+import BlogEditor from './pages/BlogEditor';
+import BlogPreview from './pages/BlogPreview';
 import './App.css';
 
 function App() {
@@ -21,6 +23,9 @@ function App() {
           <Route path="/blog/:id" element={<SingleBlogView />} />
           <Route element={<PrivateRoute/>}>
             <Route path='/dashboard' element={<Dashboard/>} />
+            <Route path='/blog/new' element={<BlogEditor />} />
+            <Route path='/blog/edit/:id' element={<BlogEditor />} />
+            <Route path='/blog/preview/:id' element={<BlogPreview />} />
           </Route>
         </Routes>
       </div>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://blog-app-server-ai1e.onrender.com/api', // Replace with your actual API base URL
+  baseURL: 'http://localhost:5000/api', // Replace with your actual API base URL
 });
 
 // Add a request interceptor
